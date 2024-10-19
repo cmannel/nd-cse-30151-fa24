@@ -1,0 +1,300 @@
+Problem 1: SAT 
+  run time: 9.632110595703125e-05
+  num literals: 36
+Problem 2: UNSAT 
+  run time: 8.058547973632812e-05
+  num literals: 36
+Problem 3: UNSAT 
+  run time: 8.821487426757812e-05
+  num literals: 36
+Problem 4: UNSAT 
+  run time: 7.104873657226562e-05
+  num literals: 36
+Problem 5: UNSAT 
+  run time: 6.866455078125e-05
+  num literals: 36
+Problem 6: UNSAT 
+  run time: 7.510185241699219e-05
+  num literals: 36
+Problem 7: UNSAT 
+  run time: 7.963180541992188e-05
+  num literals: 36
+Problem 8: SAT 
+  run time: 9.72747802734375e-05
+  num literals: 36
+Problem 9: UNSAT 
+  run time: 0.00010013580322265625
+  num literals: 36
+Problem 10: UNSAT 
+  run time: 8.654594421386719e-05
+  num literals: 36
+Problem 11: UNSAT 
+  run time: 0.0001919269561767578
+  num literals: 144
+Problem 12: UNSAT 
+  run time: 0.00017786026000976562
+  num literals: 144
+Problem 13: UNSAT 
+  run time: 0.00015854835510253906
+  num literals: 144
+Problem 14: UNSAT 
+  run time: 0.0002772808074951172
+  num literals: 144
+Problem 15: UNSAT 
+  run time: 0.000102996826171875
+  num literals: 144
+Problem 16: UNSAT 
+  run time: 0.00010228157043457031
+  num literals: 144
+Problem 17: UNSAT 
+  run time: 0.00019550323486328125
+  num literals: 144
+Problem 18: UNSAT 
+  run time: 0.0001614093780517578
+  num literals: 144
+Problem 19: SAT 
+  run time: 0.00012230873107910156
+  num literals: 144
+Problem 20: UNSAT 
+  run time: 0.0001747608184814453
+  num literals: 144
+Problem 21: UNSAT 
+  run time: 0.0002155303955078125
+  num literals: 240
+Problem 22: UNSAT 
+  run time: 0.00015354156494140625
+  num literals: 240
+Problem 23: UNSAT 
+  run time: 0.0001475811004638672
+  num literals: 240
+Problem 24: UNSAT 
+  run time: 0.0002148151397705078
+  num literals: 240
+Problem 25: UNSAT 
+  run time: 0.00019979476928710938
+  num literals: 240
+Problem 26: UNSAT 
+  run time: 0.0002143383026123047
+  num literals: 240
+Problem 27: UNSAT 
+  run time: 0.00014472007751464844
+  num literals: 240
+Problem 28: UNSAT 
+  run time: 0.00022101402282714844
+  num literals: 240
+Problem 29: UNSAT 
+  run time: 0.00017905235290527344
+  num literals: 240
+Problem 30: UNSAT 
+  run time: 0.00016307830810546875
+  num literals: 240
+Problem 31: SAT 
+  run time: 0.00042724609375
+  num literals: 480
+Problem 32: UNSAT 
+  run time: 0.00025534629821777344
+  num literals: 480
+Problem 33: UNSAT 
+  run time: 0.0003669261932373047
+  num literals: 480
+Problem 34: UNSAT 
+  run time: 0.00020003318786621094
+  num literals: 480
+Problem 35: UNSAT 
+  run time: 0.0002377033233642578
+  num literals: 480
+Problem 36: UNSAT 
+  run time: 0.00026106834411621094
+  num literals: 480
+Problem 37: UNSAT 
+  run time: 0.0002300739288330078
+  num literals: 480
+Problem 38: UNSAT 
+  run time: 0.0004336833953857422
+  num literals: 480
+Problem 39: UNSAT 
+  run time: 0.00033736228942871094
+  num literals: 480
+Problem 40: SAT 
+  run time: 0.0007522106170654297
+  num literals: 480
+Problem 41: UNSAT 
+  run time: 0.0005147457122802734
+  num literals: 576
+Problem 42: UNSAT 
+  run time: 0.00029778480529785156
+  num literals: 576
+Problem 43: UNSAT 
+  run time: 0.0002932548522949219
+  num literals: 576
+Problem 44: UNSAT 
+  run time: 0.0002474784851074219
+  num literals: 576
+Problem 45: UNSAT 
+  run time: 0.00032520294189453125
+  num literals: 576
+Problem 46: SAT 
+  run time: 0.0002720355987548828
+  num literals: 576
+Problem 47: SAT 
+  run time: 0.0004951953887939453
+  num literals: 576
+Problem 48: UNSAT 
+  run time: 0.000370025634765625
+  num literals: 576
+Problem 49: UNSAT 
+  run time: 0.00035858154296875
+  num literals: 576
+Problem 50: UNSAT 
+  run time: 0.00024175643920898438
+  num literals: 576
+Problem 51: UNSAT 
+  run time: 0.0003674030303955078
+  num literals: 660
+Problem 52: UNSAT 
+  run time: 0.000392913818359375
+  num literals: 660
+Problem 53: UNSAT 
+  run time: 0.0002944469451904297
+  num literals: 660
+Problem 54: UNSAT 
+  run time: 0.00035881996154785156
+  num literals: 660
+Problem 55: UNSAT 
+  run time: 0.0003464221954345703
+  num literals: 660
+Problem 56: UNSAT 
+  run time: 0.0003707408905029297
+  num literals: 660
+Problem 57: UNSAT 
+  run time: 0.00027942657470703125
+  num literals: 660
+Problem 58: UNSAT 
+  run time: 0.0002770423889160156
+  num literals: 660
+Problem 59: UNSAT 
+  run time: 0.000274658203125
+  num literals: 660
+Problem 60: UNSAT 
+  run time: 0.000286102294921875
+  num literals: 660
+Problem 61: UNSAT 
+  run time: 0.000774383544921875
+  num literals: 836
+Problem 62: UNSAT 
+  run time: 0.00039696693420410156
+  num literals: 836
+Problem 63: UNSAT 
+  run time: 0.0002906322479248047
+  num literals: 836
+Problem 64: UNSAT 
+  run time: 0.00033545494079589844
+  num literals: 836
+Problem 65: UNSAT 
+  run time: 0.0006563663482666016
+  num literals: 836
+Problem 66: UNSAT 
+  run time: 0.00048065185546875
+  num literals: 836
+Problem 67: UNSAT 
+  run time: 0.0007574558258056641
+  num literals: 836
+Problem 68: UNSAT 
+  run time: 0.00035643577575683594
+  num literals: 836
+Problem 69: UNSAT 
+  run time: 0.0004456043243408203
+  num literals: 836
+Problem 70: UNSAT 
+  run time: 0.0006158351898193359
+  num literals: 836
+Problem 71: UNSAT 
+  run time: 0.0003039836883544922
+  num literals: 1032
+Problem 72: UNSAT 
+  run time: 0.0006244182586669922
+  num literals: 1032
+Problem 73: UNSAT 
+  run time: 0.0008039474487304688
+  num literals: 1032
+Problem 74: UNSAT 
+  run time: 0.00034737586975097656
+  num literals: 1032
+Problem 75: UNSAT 
+  run time: 0.0004341602325439453
+  num literals: 1032
+Problem 76: UNSAT 
+  run time: 0.0003936290740966797
+  num literals: 1032
+Problem 77: SAT 
+  run time: 0.00037550926208496094
+  num literals: 1032
+Problem 78: UNSAT 
+  run time: 0.0004239082336425781
+  num literals: 1032
+Problem 79: UNSAT 
+  run time: 0.00044727325439453125
+  num literals: 1032
+Problem 80: UNSAT 
+  run time: 0.0005590915679931641
+  num literals: 1032
+Problem 81: UNSAT 
+  run time: 0.0005145072937011719
+  num literals: 1170
+Problem 82: UNSAT 
+  run time: 0.0005040168762207031
+  num literals: 1170
+Problem 83: UNSAT 
+  run time: 0.0012195110321044922
+  num literals: 1170
+Problem 84: UNSAT 
+  run time: 0.0004496574401855469
+  num literals: 1170
+Problem 85: UNSAT 
+  run time: 0.0004763603210449219
+  num literals: 1170
+Problem 86: UNSAT 
+  run time: 0.00038623809814453125
+  num literals: 1170
+Problem 87: UNSAT 
+  run time: 0.0004513263702392578
+  num literals: 1170
+Problem 88: UNSAT 
+  run time: 0.000408172607421875
+  num literals: 1170
+Problem 89: UNSAT 
+  run time: 0.00045752525329589844
+  num literals: 1170
+Problem 90: UNSAT 
+  run time: 0.0009157657623291016
+  num literals: 1170
+Problem 91: UNSAT 
+  run time: 0.0005559921264648438
+  num literals: 1316
+Problem 92: UNSAT 
+  run time: 0.0006608963012695312
+  num literals: 1316
+Problem 93: UNSAT 
+  run time: 0.0005116462707519531
+  num literals: 1316
+Problem 94: UNSAT 
+  run time: 0.00045752525329589844
+  num literals: 1316
+Problem 95: UNSAT 
+  run time: 0.0005419254302978516
+  num literals: 1316
+Problem 96: UNSAT 
+  run time: 0.0008795261383056641
+  num literals: 1316
+Problem 97: UNSAT 
+  run time: 0.0037856101989746094
+  num literals: 1316
+Problem 98: UNSAT 
+  run time: 0.0008442401885986328
+  num literals: 1316
+Problem 99: UNSAT 
+  run time: 0.0010886192321777344
+  num literals: 1316
+Problem 100: UNSAT 
+  run time: 0.0013284683227539062
+  num literals: 1316
