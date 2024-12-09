@@ -1,0 +1,25 @@
+Turing Machine: {w | w has twice the number of 0's as it does 1's} Deterministic
+Initial string: 001001
+String accepted in 21 transitions
+  q0001001
+  _q1xx001
+  _xq1x001
+  _xxq1001
+  _q1xxxxx
+  _xq1xxxx
+  _xxq1xxx
+  _xxxq1xx
+  _xxxxq1x
+  _xxxxxq1
+  _xxxxx_qacc
+Configurations explored: 546
+Average non-determinism: 26.0
+
+Turing Machine: {w | w has twice the number of 0's as it does 1's} Deterministic
+Initial string: 1011
+String rejected in 5 transitions
+  q01011
+  _x11q3
+Configurations explored: 676
+Average non-determinism: 135.2
+

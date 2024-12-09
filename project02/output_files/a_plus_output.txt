@@ -1,0 +1,17 @@
+Turing Machine: a plus
+Initial string: aaa
+String accepted in 4 transitions
+  q1aaa
+  aq1aa
+  aaq1a
+  aaaq2
+  aaq3a_
+Configurations explored: 21
+Average non-determinism: 5.25
+
+Turing Machine: a plus
+Initial string: aaaa
+Execution stopped after 5 transitions
+Configurations explored: 45
+Average non-determinism: 9.0
+

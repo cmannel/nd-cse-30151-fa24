@@ -1,0 +1,16 @@
+Turing Machine: {w | w has the same number of 0's and 1's} Nondeterministic
+Initial string: 1010
+String accepted in 14 transitions
+  q01010
+  _xxx_qacc
+Configurations explored: 400
+Average non-determinism: 28.571428571428573
+
+Turing Machine: {w | w has the same number of 0's and 1's} Nondeterministic
+Initial string: 0
+String rejected in 2 transitions
+  q00
+  _q1
+Configurations explored: 440
+Average non-determinism: 220.0
+
