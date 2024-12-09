@@ -33,7 +33,7 @@ class TreeNode:
         self.index = index              # Position of the node in the tree (eg. 132) represents the path
         self.string = string            # String on tape
         self.children = children        # List to hold child nodes (eg. 1321, 1322, 1323...)
-        self.state = state              # TM state [curr_state, head_index, next_state output, direction]
+        self.state = state              # TM state [curr_state, head_index, configuration]
         
     def __repr__(self):
         # String representation of the Node for debugging
@@ -41,18 +41,26 @@ class TreeNode:
             f"Node(index={self.index}, string = {self.string}, children={self.children}, state={self.state}"
         )           
     
-    def get_children(self, current_node, rules, end_index):
+    def get_children(self, current_node, rules, end_index, configurations_explored, output_file):
         # Function to dynamically generate children when visiting a node
         node_index = current_node.index
         TM_input = current_node.string
         curr_state = current_node.state[0]
         head_index = current_node.state[1]
+        curr_config = current_node.state[2]
         
         children = []
         new_node_index = (node_index * 10)
+
+        # If tracing activated, print configurations
+        if end_index != -1:
+            length = len(str(node_index))
+            if str(node_index) == str(end_index)[:length]:
+                output_file.write(f'  {curr_config}\n')
         
         for rule in rules:
             new_node_index += 1
+            configurations_explored += 1
                     
             # Check if reached a blank space on tape
             if head_index >= len(TM_input):
@@ -60,43 +68,34 @@ class TreeNode:
             else:
                 input_char = TM_input[head_index]
             
-            # if node_index == 112:
-                # print(f"    curr_state {curr_state}, head_at {input_char}.")
-                # print(f"    target_state {rule[0]}, target_input {rule[1]}.")
-                # print("   ", curr_state == rule[0], input_char == rule[1])
-            
             # Find rule that applies, create a node per rule
             if curr_state == rule[0] and input_char == rule[1]:  
-                
-                # Concatenate by cases              
-                try:
-                    TM_input = TM_input[0:head_index] + rule[3] + TM_input[head_index + 1:]
-                    configuration = TM_input[0:head_index] + curr_state + rule[3] + TM_input[head_index + 1:]
-                except:
-                    TM_input = TM_input + rule[3]
-                    configuration = TM_input + curr_state + rule[3]
-                
+                next_state = rule[2]
                 # Move head over
                 if rule[4] == 'R':
-                    head_index += 1
+                    new_head_index = head_index + 1
                 elif rule[4] == 'L' and head_index > 0:
-                    head_index -= 1
+                    new_head_index = head_index - 1
+                    
+                # Concatenate by cases      
+                if head_index < len(TM_input):
+                    new_TM_input = TM_input[:head_index] + rule[3] + TM_input[head_index + 1:]
+                else:
+                    new_TM_input = TM_input + rule[3]                
+                
+                # Set new TM state by cases   
+                if new_head_index < len(TM_input):
+                    new_config = new_TM_input[:new_head_index] + next_state + new_TM_input[new_head_index:]
+                else:
+                    new_config = new_TM_input + next_state
                     
                 # Set state for node
-                child_state = [rule[2], head_index]
-                
-                child = TreeNode(new_node_index, TM_input, None, child_state)
-                
-                if end_index != -1:
-                    length = len(str(new_node_index))
-                    # print(length)
-                    # print(str(new_node_index), end_index, str(end_index)[:length])
-                    if str(new_node_index) == str(end_index)[:length]:
-                        print(configuration)
+                child_state = [rule[2], new_head_index, new_config]
+                child = TreeNode(new_node_index, new_TM_input, None, child_state)
                         
                 children.append(child)
                 
-        return children
+        return children, configurations_explored
                 
 def csv_to_machine(csv_file):
     tm = TuringMachine()
@@ -127,11 +126,11 @@ def csv_to_machine(csv_file):
     
     return tm
 
-def bfs(root, accept_state, rules, limit, depth): 
+def bfs(root, accept_state, rules, limit, depth, configurations_explored, output_file): 
     transitions_taken = 0
     node_index = 0
     if root is None:
-        return None, transitions_taken, node_index
+        return None, transitions_taken, node_index, configurations_explored
 
     queue = deque([root])  # Initialize the queue with the root node
    
@@ -140,9 +139,14 @@ def bfs(root, accept_state, rules, limit, depth):
         node_index = current_node.index
      
         if current_node.state[0] == accept_state:
-            return current_node, transitions_taken, node_index # found an accept
+            
+            # If depth has a value, we are tracing, print end config
+            if depth != -1:
+                output_file.write(f'  {current_node.state[2]}\n')
                 
-        children = current_node.get_children(current_node, rules, depth)
+            return current_node, transitions_taken, node_index, configurations_explored # found an accept
+                
+        children, configurations_explored = current_node.get_children(current_node, rules, depth, configurations_explored, output_file)
         transitions_taken = len(str(node_index))
 
         # Enqueue all children of the current node
@@ -150,9 +154,9 @@ def bfs(root, accept_state, rules, limit, depth):
             queue.append(child)
             
         if transitions_taken == limit: 
-            return "Limit Exceeded", transitions_taken, node_index
+            return "Limit Exceeded", transitions_taken, node_index, configurations_explored
         
-    return None, transitions_taken, node_index # all paths rejected    
+    return None, transitions_taken, node_index, configurations_explored # all paths rejected    
             
 def main():
     # Initialize the parser
@@ -160,7 +164,7 @@ def main():
 
     # Define the required positional arguments
     parser.add_argument("TM_file", type=str, help="Name of TM file")
-    parser.add_argument("input", type=str, help="Input to TM")
+    parser.add_argument("inputs", nargs='*', help="Input to TM")
 
     # Define the optional flag
     parser.add_argument("--terminate", nargs="?", const=None, type=int, help="Enable the max transition limit")
@@ -170,46 +174,49 @@ def main():
 
     # Access the arguments
     TM_file = args.TM_file
-    TM_input = args.input
+    TM_inputs = args.inputs
     transition_limit = args.terminate
-       
-    # Create Turing Machine
-    tm = csv_to_machine(TM_file)
     
-    # Header output
-    print(f"Turing Machine: {tm.name}")
-    print(f"Initial string: {TM_input}")
+    # Open an output file
+    with open("output.txt", "w") as output_file:
+        # Create Turing Machine
+        tm = csv_to_machine(TM_file)
+        
+        # Init runtime variables
+        configurations_explored = 0
+        depth = 0
+        avg_nondeterminism = 0
+
+        # Header output
+        for input in TM_inputs:
+            
+            output_file.write(f"Turing Machine: {tm.name}\n")
+            output_file.write(f"Initial string: {input}\n")
+            
+            # Begin search for accept state
+            root = TreeNode(1, input, None, [tm.start_state, 0, tm.start_state + input])
+            target = tm.accept_state
+            rules = tm.rules
+            accept_node, depth, node_index, configurations_explored = bfs(root, target, rules, transition_limit, -1, configurations_explored, output_file)
+            
+            # Print paths according to accept or reject state
+            if accept_node == None:
+                output_file.write(f"String rejected in {depth} transitions\n")
+                bfs(root, target, rules, transition_limit, node_index, configurations_explored, output_file)
+            elif accept_node == "Limit Exceeded":
+                output_file.write(f"Execution stopped after {depth} transitions\n")
+            else:
+                output_file.write(f"String accepted in {depth} transitions\n")
+                bfs(root, target, rules, transition_limit, node_index, configurations_explored, output_file)
+                        
+            avg_nondeterminism = configurations_explored / depth
+            output_file.write(f'Configurations explored: {configurations_explored}\n')
+            output_file.write(f'Average non-determinism: {avg_nondeterminism}\n')
+            output_file.write("\n")
     
-    # Begin search for accept state
-    root = TreeNode(1, TM_input, None, [tm.start_state, 0])
-    target = tm.accept_state
-    rules = tm.rules
-    accept_node, depth, node_index = bfs(root, target, rules, transition_limit, -1)
-     
-    # Print paths according to accept or reject state
-    if accept_node == None:
-        print("String rejected in", depth, "transitions")
-        bfs(root, target, rules, transition_limit, node_index)
-    if accept_node == "Limit Exceeded":
-        print("Execution stopped after", depth, "transitions")
-    else:
-        print("String accepted in", depth, "transitions")
-        bfs(root, target, rules, transition_limit, node_index)
-        # TODO: print configuration path
-        # format: left of head string, state, head character, right of string
+    # Print contents of the output file
+    with open("output.txt", "r") as output_file:
+        print(output_file.read())
 
 if __name__ == "__main__":
     main()
-
-
-"""
-input: aaa
-
-q1aaa
-aq1aa
-aaq1a
-aaaq2
-aaq3a
-
-
-"""
